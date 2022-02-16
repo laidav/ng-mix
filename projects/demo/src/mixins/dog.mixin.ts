@@ -1,5 +1,5 @@
 import { Injectable, OnInit } from '@angular/core';
-import { BaseClassInjector } from "projects/ng-mix/src/lib/models/BaseClassInjector";
+import { BaseClassInjector } from 'projects/ng-mix/src/lib/models/BaseClassInjector';
 
 export const DogMixin = (superClass = BaseClassInjector) => {
 
