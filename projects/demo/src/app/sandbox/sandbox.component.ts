@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component } from '@angular/core';
 import { PersonsMixin } from '../../mixins/persons.mixin';
 import { Injector } from '@angular/core';
 import { PersonService } from '../../services/person.service';
@@ -11,7 +11,6 @@ const mixin: any = PersonsMixin();
   styleUrls: ['./sandbox.component.scss'],
 })
 export class SandboxComponent extends mixin {
-  @Input() label = '';
 
   constructor(inj: Injector) { super(inj); }
 
