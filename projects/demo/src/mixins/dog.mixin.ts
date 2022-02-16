@@ -1,10 +1,10 @@
 import { Injectable, OnInit } from '@angular/core';
 import { BaseClassInjector } from "projects/ng-mix/src/lib/models/BaseClassInjector";
 
-export const <%= classify(name) %>Mixin = (superClass = BaseClassInjector) => {
+export const DogMixin = (superClass = BaseClassInjector) => {
 
   @Injectable()
-  class <%= classify(name) %> extends superClass implements OnInit {
+  class Dog extends superClass implements OnInit {
 	
   // You can inject services from the BaseClassInjector i.e
   // myService = this.injector.get(MyService);
@@ -17,5 +17,5 @@ export const <%= classify(name) %>Mixin = (superClass = BaseClassInjector) => {
     }		
   }
 
-  return <%= classify(name) %>;
+  return Dog;
 }
