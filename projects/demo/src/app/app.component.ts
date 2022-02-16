@@ -8,4 +8,8 @@ import { PersonService } from '../services/person.service';
 })
 export class AppComponent {
   constructor(private pers: PersonService) {}
+
+  onEvent($event: any) {
+    console.log('event fired');
+  }
 }

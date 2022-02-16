@@ -15,6 +15,6 @@ import { SandboxComponent } from './sandbox/sandbox.component';
     AppRoutingModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule { }

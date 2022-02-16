@@ -13,6 +13,13 @@ export const PersonsMixin = (superClass = BaseClassInjector) => {
 
     personSrvc = this.injector.get(PersonService);
 
+    alertPersons() {
+      this.persons$.subscribe((persons: Person[]) => { 
+        const names = persons.map(({ firstName, lastName }) => `${firstName} ${lastName}`).join(', ');
+        alert(names);
+      });
+    }
+
     ngOnInit(): void {
       //Call super's lifecycle method
       super.ngOnInit.call(this);
