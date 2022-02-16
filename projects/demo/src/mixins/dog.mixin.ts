@@ -10,7 +10,7 @@ export const DogMixin = (superClass = BaseClassInjector) => {
   // myService = this.injector.get(MyService);
 
     ngOnInit(): void {
-      //Call the super class lifecycle method if exists
+      //Call super's lifecycle method
       super.ngOnInit.call(this);
 
       //Implementation here

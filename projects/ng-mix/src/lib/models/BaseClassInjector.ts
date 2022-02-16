@@ -3,7 +3,7 @@ import { Injectable, Injector } from "@angular/core";
 @Injectable({
 	providedIn: 'root'
 })
-export abstract class BaseClassInjector {
+export class BaseClassInjector {
 	ngOnInit () {};
 	constructor(public injector: Injector) {}
 }
