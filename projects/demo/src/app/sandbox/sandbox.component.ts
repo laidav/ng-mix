@@ -3,7 +3,7 @@ import { PersonsMixin } from '../../mixins/persons.mixin';
 import { Injector } from '@angular/core';
 import { LabelMixin } from '../../mixins/label.mixin';
 
-const mixin: any = LabelMixin(PersonsMixin());
+const mixins: any = LabelMixin(PersonsMixin());
 
 @Component({
   selector: 'app-sandbox',
@@ -12,7 +12,7 @@ const mixin: any = LabelMixin(PersonsMixin());
   inputs: ['label'],
   outputs: ['labelEvent']
 })
-export class SandboxComponent extends mixin {
+export class SandboxComponent extends mixins {
 
   constructor(inj: Injector) { super(inj); }
 
