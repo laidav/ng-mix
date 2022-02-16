@@ -1,22 +1,23 @@
 import { Component } from '@angular/core';
 import { PersonsMixin } from '../../mixins/persons.mixin';
 import { Injector } from '@angular/core';
-import { PersonService } from '../../services/person.service';
+import { LabelMixin } from '../../mixins/label.mixin';
 
-const mixin: any = PersonsMixin();
+const mixin: any = LabelMixin(PersonsMixin());
 
 @Component({
   selector: 'app-sandbox',
   templateUrl: './sandbox.component.html',
   styleUrls: ['./sandbox.component.scss'],
+  inputs: ['label'],
+  outputs: ['labelEvent']
 })
 export class SandboxComponent extends mixin {
 
   constructor(inj: Injector) { super(inj); }
 
-  personSrvc = this.injector.get(PersonService);
-
   onClick() {
+    this.labelEvent.emit();
     this.alertPersons();
   }
 
