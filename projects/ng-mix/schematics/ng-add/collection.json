@@ -1,0 +1,14 @@
+{
+  "$schema": "../../../node_modules/@angular-devkit/schematics/collection-schema.json",
+  "schematics": {
+    "ng-add": {
+      "description": "Add my library to the project.",
+      "factory": "./ng-add/index#ngAdd"
+    }
+  },
+  "mixin": {
+    "description": "Generate a mixin in the project.",
+    "factory": "./mixin/index#mixin",
+    "schema": "./mixin/schema.json"
+  }
+}
