@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { DogMixin } from '../../mixins/dog.mixin';
+import { PersonsMixin } from '../../mixins/persons.mixin';
 import { Injector } from '@angular/core';
 import { PersonService } from '../../services/person.service';
 
@@ -8,17 +8,20 @@ import { PersonService } from '../../services/person.service';
   templateUrl: './sandbox.component.html',
   styleUrls: ['./sandbox.component.scss']
 })
-export class SandboxComponent extends DogMixin() {
+export class SandboxComponent extends PersonsMixin() {
 
-  constructor(inj: Injector) {
-    super(inj);
-  }
+  constructor(inj: Injector) { super(inj); }
 
   personSrvc = this.injector.get(PersonService);
 
-  ngOnInit(): void {
-      super.ngOnInit.call(this);
+  alertPersons() {
+    this.persons$.subscribe((persons) => { 
+      const names = persons.map(({ firstName, lastName }) => `${firstName} ${lastName}`).join(', ');
+      alert(names);
+    });
+  }
 
-      this.personSrvc.getData().subscribe((persons) => console.log(persons, 'in component'));
+  ngOnInit(): void {
+    super.ngOnInit.call(this);
   }
 }

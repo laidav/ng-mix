@@ -12,12 +12,12 @@ export class PersonService {
   getData(): Observable<Person[]> {
     return of([
       {
-        firstName: 'John Doe',
-        lastName: 'Doe'
+        firstName: 'Homer',
+        lastName: 'Simpson'
       },
       {
-        firstName: 'John Doe',
-        lastName: 'Doe'
+        firstName: 'Moe',
+        lastName: 'Szyslak'
       }
     ]);
   }
