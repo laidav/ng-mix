@@ -4,8 +4,9 @@ import { Injector } from '@angular/core';
 import { LabelMixin } from '../../mixins/label.mixin';
 import { Observable } from 'rxjs';
 import { Person } from '../models/Person';
+import { composeMixins } from 'ng-mix';
 
-const mixins: any = LabelMixin(PersonsMixin());
+const mixins = composeMixins(LabelMixin, PersonsMixin)();
 
 @Component({
   selector: 'app-sandbox',

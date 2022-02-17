@@ -5,7 +5,7 @@ import {
   Output,
   EventEmitter
 } from '@angular/core';
-import { BaseClassInjector } from 'projects/ng-mix/src/lib/models/BaseClassInjector';
+import { BaseClassInjector } from 'ng-mix';
 
 export const LabelMixin = (superClass = BaseClassInjector) => {
 
