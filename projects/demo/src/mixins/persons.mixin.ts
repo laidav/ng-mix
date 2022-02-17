@@ -4,7 +4,6 @@ import { Observable } from 'rxjs';
 import { Person } from '../app/models/Person';
 import { BaseClassInjector } from 'projects/ng-mix/src/public-api';
 
-
 export const PersonsMixin = (superClass = BaseClassInjector) => {
 
   @Injectable()
