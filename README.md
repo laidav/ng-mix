@@ -25,3 +25,8 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+
+## Notes
+- ngFor was failing     initialization of property note
+- for input outputs, they have to be declared in the decorator at component level
+- fix was to declare the type with ! saying we know its initialized

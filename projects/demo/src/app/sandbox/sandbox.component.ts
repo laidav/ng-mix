@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { PersonsMixin } from '../../mixins/persons.mixin';
 import { Injector } from '@angular/core';
 import { LabelMixin } from '../../mixins/label.mixin';
+import { Observable } from 'rxjs';
+import { Person } from '../models/Person';
 
 const mixins: any = LabelMixin(PersonsMixin());
 
@@ -13,6 +15,7 @@ const mixins: any = LabelMixin(PersonsMixin());
   outputs: ['labelEvent']
 })
 export class SandboxComponent extends mixins {
+  persons$!: Observable<Person[]>
 
   constructor(inj: Injector) { super(inj); }
 

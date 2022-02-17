@@ -1,3 +1,10 @@
 <h1>Mixin it!</h1>
 
 <button (click)="onClick()">{{ label }}</button>
+
+<div *ngIf="persons$ | async as persons">
+	<h2>People in Moe's Bar</h2>
+	<div *ngFor="let person of persons">
+		{{ person.firstName }} {{ person.lastName}}
+	</div>
+</div>

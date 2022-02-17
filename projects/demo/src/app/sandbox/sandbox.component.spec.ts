@@ -6,6 +6,25 @@ describe('SandboxComponent', () => {
   let component: SandboxComponent;
   let fixture: ComponentFixture<SandboxComponent>;
 
+  // Test cases
+  // - Inputs Outputs
+  // - Services injection
+  // - LifeCycle Hooks
+  //    - ngOnChanges
+  //    - ngOnInit
+  //    - ngDoCheck
+  //    - ngAfterContentInit
+  //    - ngAfterContectChecked
+  //    - ngAfterViewInit
+  //    - ngAfterViewChecked
+  //    - ngOnDestroy
+
+  // - Template tests
+  //    - Async pipes
+  //    - structural directives
+  //    - attribute directives
+
+
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [ SandboxComponent ]
