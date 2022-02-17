@@ -1,8 +1,8 @@
 import { Injectable, OnInit } from '@angular/core';
-import { BaseClassInjector } from 'projects/ng-mix/src/lib/models/BaseClassInjector';
 import { PersonService } from '../services/person.service';
 import { Observable } from 'rxjs';
 import { Person } from '../app/models/Person';
+import { BaseClassInjector } from 'projects/ng-mix/src/public-api';
 
 
 export const PersonsMixin = (superClass = BaseClassInjector) => {
