@@ -1,18 +1,18 @@
-import { Injectable, Injector,
-	OnChanges,
-	OnInit,
-	DoCheck,
-	AfterContentInit,
-	AfterContentChecked,
-	AfterViewInit,
-	AfterViewChecked,
-	OnDestroy,
-	SimpleChanges
+import { 
+  Injectable,
+  Injector,
+  OnChanges,
+  OnInit,
+  DoCheck,
+  AfterContentInit,
+  AfterContentChecked,
+  AfterViewInit,
+  AfterViewChecked,
+  OnDestroy,
+  SimpleChanges,
 } from "@angular/core";
 
-@Injectable({
-	providedIn: 'root'
-})
+@Injectable()
 export abstract class BaseClassInjector implements
   OnChanges,
   OnInit,
