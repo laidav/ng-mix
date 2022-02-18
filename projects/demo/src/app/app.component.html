@@ -1,1 +1,2 @@
-<app-sandbox [label]="'See who is in Moes Bar'" (labelEvent)="onEvent($event)"></app-sandbox>
+<button (click)="changeLabel()">Change Label</button>
+<app-sandbox [label]="label" (labelEvent)="onEvent($event)"></app-sandbox>

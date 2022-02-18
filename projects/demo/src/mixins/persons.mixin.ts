@@ -1,11 +1,12 @@
-import { Injectable, OnInit } from '@angular/core';
+import { Injectable, OnInit, SimpleChanges } from '@angular/core';
 import { PersonService } from '../services/person.service';
 import { Observable } from 'rxjs';
 import { Person } from '../app/models/Person';
 import { BaseClassInjector } from 'ng-mix';
 
-export const PersonsMixin = (superClass = BaseClassInjector) => {
+//Example with Service using the injector
 
+export const PersonsMixin = (superClass = BaseClassInjector) => {
   @Injectable()
   class Persons extends superClass implements OnInit {
     persons$: Observable<Person[]> = new Observable;
@@ -14,9 +15,18 @@ export const PersonsMixin = (superClass = BaseClassInjector) => {
 
     alertPersons() {
       this.persons$.subscribe((persons: Person[]) => { 
-        const names = persons.map(({ firstName, lastName }) => `${firstName} ${lastName}`).join(', ');
+        const names = persons
+          .map(({ firstName, lastName }) => `${firstName} ${lastName}`)
+          .join(', ');
+
         alert(names);
       });
+    }
+
+    ngOnChanges(changes: SimpleChanges): void {
+      super.ngOnChanges(changes);
+      //Implementation here
+      console.log(changes, 'ngOnChange in Persons Mixin');
     }
 
     ngOnInit(): void {
