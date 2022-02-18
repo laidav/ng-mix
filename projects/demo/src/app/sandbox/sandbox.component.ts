@@ -26,6 +26,6 @@ export class SandboxComponent extends mixins {
   }
 
   ngOnInit(): void {
-    super.ngOnInit.call(this);
+    super.ngOnInit();
   }
 }

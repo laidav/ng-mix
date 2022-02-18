@@ -16,7 +16,7 @@ export const LabelMixin = (superClass = BaseClassInjector) => {
 
     ngOnInit(): void {
       //Call super's lifecycle method
-      super.ngOnInit.call(this);
+      super.ngOnInit();
       console.log(this.label);
 
       //Implementation here

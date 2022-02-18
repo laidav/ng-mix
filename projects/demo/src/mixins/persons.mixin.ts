@@ -21,7 +21,7 @@ export const PersonsMixin = (superClass = BaseClassInjector) => {
 
     ngOnInit(): void {
       //Call super's lifecycle method
-      super.ngOnInit.call(this);
+      super.ngOnInit();
 
       //Implementation here
       this.persons$ = this.personSrvc.getData();
