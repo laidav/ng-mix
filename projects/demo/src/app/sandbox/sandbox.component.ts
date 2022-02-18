@@ -17,6 +17,7 @@ const mixins = composeMixins(LabelMixin, PersonsMixin)();
 })
 export class SandboxComponent extends mixins {
   persons$!: Observable<Person[]>
+  rightAway!: string;
 
   constructor(inj: Injector) { super(inj); }
 

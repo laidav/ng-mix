@@ -35,7 +35,44 @@ export const PersonsMixin = (superClass = BaseClassInjector) => {
 
       //Implementation here
       this.persons$ = this.personSrvc.getData();
+      console.log('ngOnInit in Persons Mixin');
     }		
+
+    ngDoCheck(): void {
+      super.ngDoCheck();
+      //Implementation here
+      console.log('ngDoCheck in Persons Mixin');
+    }
+
+    ngAfterContentInit(): void {
+      super.ngAfterContentInit();
+      //Implementation here
+      console.log('ngAfterContentInit in Persons Mixin');
+    }
+
+    ngAfterContentChecked(): void {
+      super.ngAfterContentChecked();
+      //Implementation here
+      console.log('ngAfterContentChecked in Persons Mixin');
+    }
+
+    ngAfterViewInit(): void {
+      super.ngAfterViewInit();
+      //Implementation here
+      console.log('ngDoCheck in Persons Mixin');
+    }
+
+    ngAfterViewChecked(): void {
+      super.ngAfterContentChecked();
+      //Implementation here
+      console.log('ngAfterViewChecked in Persons Mixin');
+    }
+
+    ngOnDestroy(): void {
+      super.ngOnDestroy();
+      //Implementation here
+      console.log('ngOnDestroy in Persons Mixin');
+    }
   }
 
   return Persons;
