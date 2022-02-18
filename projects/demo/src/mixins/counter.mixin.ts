@@ -9,6 +9,7 @@ export const CounterMixin = (superClass = BaseClassInjector) => {
   class Counter extends superClass implements OnInit {
     subscriptions = new Subscription();
     count = 0;
+    count2 = 0;
 	
     // You can inject services from the BaseClassInjector i.e
     // myService = this.injector.get(MyService);
@@ -21,6 +22,12 @@ export const CounterMixin = (superClass = BaseClassInjector) => {
       this.subscriptions.add(
         interval(1000).pipe(map((x) => x + 1)).subscribe((val) => {
           this.count = val;
+          console.log(val);
+      }));
+
+      this.subscriptions.add(
+        interval(1000).pipe(map((x) => (x + 1) * 2)).subscribe((val) => {
+          this.count2 = val;
           console.log(val);
       }));
     }		

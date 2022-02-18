@@ -15,8 +15,4 @@ export class BeerCountComponent extends mixins {
   constructor(injector: Injector) {
     super(injector);
   }
-
-  ngOnInit() {
-    super.ngOnInit();
-  }
 }
