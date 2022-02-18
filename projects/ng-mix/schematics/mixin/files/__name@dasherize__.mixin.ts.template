@@ -6,12 +6,12 @@ export const <%= classify(name) %>Mixin = (superClass = BaseClassInjector) => {
   @Injectable()
   class <%= classify(name) %> extends superClass implements OnInit {
 	
-  // You can inject services from the BaseClassInjector i.e
-  // myService = this.injector.get(MyService);
+    // You can inject services from the BaseClassInjector i.e
+    // myService = this.injector.get(MyService);
 
     ngOnInit(): void {
       //Call super's lifecycle method
-      super.ngOnInit.call(this);
+      super.ngOnInit();
 
       //Implementation here
     }		
