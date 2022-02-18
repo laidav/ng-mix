@@ -10,4 +10,7 @@
 </div>
 
 
-<h1 *ngIf="label === 'Who is in Moes Bar?'">Barney Gumble is here!</h1>
+<app-beer-count
+  *ngIf="label === 'Who is in Moes Bar?'"
+  [label]="'Barney is drinking '"
+></app-beer-count>
