@@ -81,4 +81,18 @@ describe('SandboxComponent', () => {
       .toEqual({ firstName: 'new', lastName: 'guy' });
   });
   // #endregion SERVICES
+
+  // #region TEMPLATES
+
+  it('async pipe should fetching persons and display names', () => {
+    expect(component.personSrvc.personOfTheMonth).toBeUndefined();
+
+    spyOn(component.labelEvent, 'emit');
+    const button = fixture.nativeElement.querySelector('#person-name-0');
+    const button2 = fixture.nativeElement.querySelector('#person-name-1');
+    fixture.detectChanges();
+    expect(button.innerHTML).toEqual(' Homer Simpson ');
+    expect(button2.innerHTML).toEqual(' Moe Szyslak ');
+  });
+  // #endregion TEMPLATES
 });

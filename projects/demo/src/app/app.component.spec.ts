@@ -45,4 +45,14 @@ describe('AppComponent', () => {
     expect(component.onEvent).toHaveBeenCalled();
   });
   // #endregion MIXIN INPUTS & OUTPUTS
+
+  // #region LIFECYCLE HOOKS
+  it('ngOnChanges - label input change should trigger hook in the mixins', () => {
+    spyOn(console, 'log');
+    component.changeLabel();
+    fixture.detectChanges();
+    expect(console.log).toHaveBeenCalledWith('Who is in Moes Bar?', 'ngOnChanges in Label mixin');
+    expect(console.log).toHaveBeenCalledWith('Who is in Moes Bar?', 'ngOnChanges in Persons Mixin');
+  });
+  // #endregion LIFECYCLE HOOKS
 });

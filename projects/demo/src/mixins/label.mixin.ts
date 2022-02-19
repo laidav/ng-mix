@@ -21,7 +21,7 @@ export const LabelMixin = (superClass = BaseClassInjector) => {
 
     ngOnChanges(changes: SimpleChanges): void {
       super.ngOnChanges(changes);
-      console.log(changes, 'ngOnChanges in Label mixin');
+      console.log(changes.label.currentValue, 'ngOnChanges in Label mixin');
     }
 
     ngOnInit(): void {

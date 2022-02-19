@@ -26,7 +26,7 @@ export const PersonsMixin = (superClass = BaseClassInjector) => {
     ngOnChanges(changes: SimpleChanges): void {
       super.ngOnChanges(changes);
       //Implementation here
-      console.log(changes, 'ngOnChange in Persons Mixin');
+      console.log(changes.label.currentValue, 'ngOnChanges in Persons Mixin');
     }
 
     ngOnInit(): void {
@@ -35,6 +35,7 @@ export const PersonsMixin = (superClass = BaseClassInjector) => {
 
       //Implementation here
       this.persons$ = this.personSrvc.getData();
+      console.log('ngOnInit in Persons Mixin');
     }		
 
     ngDoCheck(): void {

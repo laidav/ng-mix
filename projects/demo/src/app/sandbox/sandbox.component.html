@@ -4,7 +4,7 @@
 
 <div *ngIf="persons$ | async as persons">
 	<h2>People in Moe's Bar</h2>
-	<div *ngFor="let person of persons">
+	<div *ngFor="let person of persons; let i = index" id="person-name-{{ i }}">
 		{{ person.firstName }} {{ person.lastName}}
 	</div>
 </div>
