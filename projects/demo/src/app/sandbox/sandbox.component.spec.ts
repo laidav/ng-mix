@@ -42,9 +42,14 @@ describe('SandboxComponent', () => {
   // #region INHERIT FROM MIXINS
   it('should create and inherit properties, methods from mixins', () => {
     expect(component).toBeTruthy();
+    // #region LabelMixin
     expect(component.labelEvent).toBeTruthy();
+    expect(component.label).toBe('');
+    // #region LabelMixin
     expect(component.alertPersons).toBeTruthy();
     expect(component.personSrvc).toBeTruthy();
+    expect(component.persons$).toBeTruthy();
+    // #endregion PersonsMixin
     expect(component.personSrvc.personOfTheMonth).toBeUndefined();
   });
 
@@ -61,13 +66,17 @@ describe('SandboxComponent', () => {
   // #endregion INHERIT FROM MIXINS
 
   // #region SERVICES
+  it('component personSrvc should be the same as PersonsService obtained from injector', () => {
+    expect(component.personSrvc).toBe(component.injector.get(PersonService));
+  });
+
   it('should detect the new personOfTheMonth in PersonsService', () => {
     expect(component).toBeTruthy();
     expect(component.labelEvent).toBeTruthy();
     expect(component.alertPersons).toBeTruthy();
   });
 
-  it('it should set new personOfTheMonth in PersonService', () => {
+  it('should set new personOfTheMonth in PersonService', () => {
     spyOn(component.labelEvent, 'emit');
     const button = fixture.nativeElement.querySelector('.sandbox-button');
     button.dispatchEvent(new Event('click'));
