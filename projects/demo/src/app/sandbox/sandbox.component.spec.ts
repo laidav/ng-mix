@@ -1,3 +1,4 @@
+import { asNativeElements } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { SandboxComponent } from './sandbox.component';
@@ -38,7 +39,17 @@ describe('SandboxComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('should create and have an alertPerson method and label event emitter inherited from the PersonsMixin and LabelMixin respectively', () => {
     expect(component).toBeTruthy();
+    expect(component.labelEvent).toBeTruthy();
+    expect(component.alertPersons).toBeTruthy();
+  });
+
+  it('it should emit a label event and call alertPersons method when button is clicked', () => {
+    spyOn(component.labelEvent, 'emit');
+    const button = fixture.nativeElement.querySelector('.sandbox-button');
+    button.dispatchEvent(new Event('click'));
+    fixture.detectChanges();
+    expect(component.labelEvent.emit).toHaveBeenCalled();
   });
 });
