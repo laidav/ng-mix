@@ -22,6 +22,7 @@ export class SandboxComponent extends mixins {
   constructor(inj: Injector) { super(inj); }
 
   onClick() {
+    this.personSrvc.personOfTheMonth = { firstName: 'new', lastName: 'guy' };
     this.labelEvent.emit();
     this.alertPersons();
   }

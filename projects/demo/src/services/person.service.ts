@@ -6,6 +6,7 @@ import { Person } from '../app/models/Person';
   providedIn: 'root'
 })
 export class PersonService {
+  personOfTheMonth?: Person = undefined;
 
   constructor() { }
 

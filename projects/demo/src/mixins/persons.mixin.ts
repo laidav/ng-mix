@@ -35,7 +35,6 @@ export const PersonsMixin = (superClass = BaseClassInjector) => {
 
       //Implementation here
       this.persons$ = this.personSrvc.getData();
-      console.log('ngOnInit in Persons Mixin');
     }		
 
     ngDoCheck(): void {
