@@ -1,6 +1,6 @@
 <h1>Mixin it!</h1>
 
-<button class="sandbox-button" (click)="onClick()">{{ label + rightAway }}</button>
+<button class="sandbox-button" (click)="onClick()">Alert persons in Moe's Bar</button>
 
 <div *ngIf="persons$ | async as persons">
 	<h2>People in Moe's Bar</h2>
@@ -9,8 +9,8 @@
 	</div>
 </div>
 
-
+<h2 class="sandbox-title">{{ label + suffix }}</h2>
 <app-beer-count
-  *ngIf="label === 'Who is in Moes Bar?'"
+  *ngIf="label === 'Showing Drinkers'"
   [label]="'Homer is drinking '"
 ></app-beer-count>

@@ -17,7 +17,7 @@ export const LabelMixin = (superClass = BaseClassInjector) => {
     @Input() label = '';
     @Output() labelEvent = new EventEmitter<any>();
 
-    rightAway = ' Right away!'
+    suffix = ' with Label Mixin Suffix'
 
     ngOnChanges(changes: SimpleChanges): void {
       super.ngOnChanges(changes);

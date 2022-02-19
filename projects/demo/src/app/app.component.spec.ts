@@ -31,10 +31,9 @@ describe('AppComponent', () => {
   });
 
   // #region MIXIN INPUTS & OUTPUTS
-  it('should pass proper LabelMixin Input to sandbox component', () => {
-    const app = fixture.componentInstance;
-    const button = fixture.nativeElement.querySelector('.sandbox-button');
-    expect(button.innerHTML).toBe('See who is in Moes Bar Right away!');
+  it('should pass proper LabelMixin Input to sandbox component and append suffix from LabelMixin', () => {
+    const button = fixture.nativeElement.querySelector('.sandbox-title');
+    expect(button.innerHTML).toBe('Hiding Drinkers with Label Mixin Suffix');
   });
 
   it('should recieve the LabelMixin Output event on sandbox button click', () => {
@@ -51,8 +50,8 @@ describe('AppComponent', () => {
     spyOn(console, 'log');
     component.changeLabel();
     fixture.detectChanges();
-    expect(console.log).toHaveBeenCalledWith('Who is in Moes Bar?', 'ngOnChanges in Label mixin');
-    expect(console.log).toHaveBeenCalledWith('Who is in Moes Bar?', 'ngOnChanges in Persons Mixin');
+    expect(console.log).toHaveBeenCalledWith('Showing Drinkers', 'ngOnChanges in Label mixin');
+    expect(console.log).toHaveBeenCalledWith('Showing Drinkers', 'ngOnChanges in Persons Mixin');
   });
   // #endregion LIFECYCLE HOOKS
 });

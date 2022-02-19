@@ -6,8 +6,8 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  private readonly labelOne = 'See who is in Moes Bar';
-  private readonly labelTwo = 'Who is in Moes Bar?';
+  private readonly labelOne = 'Hiding Drinkers';
+  private readonly labelTwo = 'Showing Drinkers';
 
   label = this.labelOne;
 
