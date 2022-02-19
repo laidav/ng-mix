@@ -39,7 +39,6 @@ describe('AppComponent', () => {
 
   it('should recieve the LabelMixin Output event on sandbox button click', () => {
     spyOn(component, 'onEvent');
-    const app = fixture.componentInstance;
     const button = fixture.nativeElement.querySelector('.sandbox-button');
     button.dispatchEvent(new Event('click'));
     fixture.detectChanges();
