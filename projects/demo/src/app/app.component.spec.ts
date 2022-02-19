@@ -30,7 +30,7 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  // #region INPUTS & OUTPUTS
+  // #region MIXIN INPUTS & OUTPUTS
   it('should pass proper LabelMixin Input to sandbox component', () => {
     const app = fixture.componentInstance;
     const button = fixture.nativeElement.querySelector('.sandbox-button');
@@ -45,5 +45,5 @@ describe('AppComponent', () => {
     fixture.detectChanges();
     expect(component.onEvent).toHaveBeenCalled();
   });
-  // #endregion INPUTS & OUTPUTS
+  // #endregion MIXIN INPUTS & OUTPUTS
 });
