@@ -45,7 +45,7 @@ describe('AppComponent', () => {
     fixture.detectChanges();
     expect(component.onEvent).toHaveBeenCalled();
   });
-  // #endregion MIXIN INPUTS & OUTPUTS
+  // #endregion
 
   // #region LIFECYCLE HOOKS
   describe('Lifecycle hooks', () => {
@@ -100,5 +100,5 @@ describe('AppComponent', () => {
       expect(console.log).toHaveBeenCalledWith('subscriptionsUnsubscribed=', true);
     });
   })
-  // #endregion LIFECYCLE HOOKS
+  // #endregion
 });
