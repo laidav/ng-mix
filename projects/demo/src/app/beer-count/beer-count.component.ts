@@ -3,7 +3,7 @@ import { CounterMixin } from '../../mixins/counter.mixin';
 import { LabelMixin } from '../../mixins/label.mixin';
 import { composeMixins } from 'ng-mix';
 
-const mixins = composeMixins(LabelMixin, CounterMixin)()
+const mixins = composeMixins(LabelMixin, CounterMixin)
 
 @Component({
   selector: 'app-beer-count',
