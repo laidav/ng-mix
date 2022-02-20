@@ -57,7 +57,7 @@ export const LabelMixin = (superClass = BaseClassInjector) => {
     }
 
     ngAfterViewChecked(): void {
-      super.ngAfterContentChecked();
+      super.ngAfterViewChecked();
       //Implementation here
       console.log('ngAfterViewChecked in Label Mixin');
     }

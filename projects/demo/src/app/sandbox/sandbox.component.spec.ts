@@ -7,25 +7,6 @@ describe('SandboxComponent', () => {
   let component: SandboxComponent;
   let fixture: ComponentFixture<SandboxComponent>;
 
-  // Test cases
-  // - Inputs Outputs
-  // - Services injection
-  // - LifeCycle Hooks
-  //    - ngOnChanges
-  //    - ngOnInit
-  //    - ngDoCheck
-  //    - ngAfterContentInit
-  //    - ngAfterContectChecked
-  //    - ngAfterViewInit
-  //    - ngAfterViewChecked
-  //    - ngOnDestroy
-
-  // - Template tests
-  //    - Async pipes
-  //    - structural directives
-  //    - attribute directives
-
-
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [ SandboxComponent ]
@@ -39,9 +20,10 @@ describe('SandboxComponent', () => {
     fixture.detectChanges();
   });
 
-  // #region INHERIT FROM MIXINS
+  // #region INHERIT PROPERTIES AND METHODS FROM MIXINS
   it('should create and inherit properties, methods from mixins', () => {
     expect(component).toBeTruthy();
+
     // LabelMixin
     expect(component.labelEvent).toBeTruthy();
     expect(component.label).toBe('');
@@ -63,7 +45,7 @@ describe('SandboxComponent', () => {
     expect(component.alertPersons).toHaveBeenCalled();
   });
 
-  // #endregion INHERIT FROM MIXINS
+  // #endregion INHERIT PROPERTIES AND METHODS FROM MIXINS
 
   // #region SERVICES
   it('component personSrvc should be the same as PersonsService obtained from injector', () => {

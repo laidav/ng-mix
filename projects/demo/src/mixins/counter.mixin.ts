@@ -9,14 +9,46 @@ export const CounterMixin = (superClass = BaseClassInjector) => {
   class Counter extends superClass implements OnInit {
     subscriptions = new Subscription();
     count = 0;
-    count2 = 0;
+    count2 = 2;
 	
     // You can inject services from the BaseClassInjector i.e
     // myService = this.injector.get(MyService);
+    ngDoCheck(): void {
+      super.ngDoCheck();
+      console.log('ngDoCheck in counter mixin', this.count);
+      console.log('ngDoCheck in counter mixin', this.count2);
+    }
+
+    ngAfterContentInit(): void {
+      super.ngAfterContentInit();
+      console.log('ngAfterContentInit in counter mixin', this.count);
+      console.log('ngAfterContentInit in counter mixin', this.count2);
+    }
+
+    ngAfterContentChecked(): void {
+      super.ngAfterContentChecked();
+      console.log('ngAfterContentChecked in counter mixin', this.count);
+      console.log('ngAfterContentChecked in counter mixin', this.count2);
+    }
+
+    ngAfterViewInit(): void {
+      super.ngAfterViewInit();
+      console.log('ngAfterViewInit in counter mixin', this.count);
+      console.log('ngAfterViewInit in counter mixin', this.count2);
+    }
+
+    ngAfterViewChecked(): void {
+      super.ngAfterViewChecked();
+      console.log('ngAfterViewChecked in counter mixin', this.count);
+      console.log('ngAfterViewChecked in counter mixin', this.count2);
+    }
 
     ngOnInit(): void {
       //Call super's lifecycle method
       super.ngOnInit();
+
+      console.log('ngOnInit in counter mixin', this.count);
+      console.log('ngOnInit in counter mixin', this.count2);
 
       //Implementation here
       this.subscriptions.add(
@@ -34,7 +66,9 @@ export const CounterMixin = (superClass = BaseClassInjector) => {
 
     ngOnDestroy(): void {
       super.ngOnDestroy();
+      console.log('subscriptionsUnsubscribed=', this.subscriptions.closed);
       this.subscriptions.unsubscribe();
+      console.log('subscriptionsUnsubscribed=', this.subscriptions.closed);
     }
   }
 
