@@ -45,7 +45,7 @@ describe('SandboxComponent', () => {
     expect(component.alertPersons).toHaveBeenCalled();
   });
 
-  // #endregion INHERIT PROPERTIES AND METHODS FROM MIXINS
+  // #endregion
 
   // #region SERVICES
   it('component personSrvc should be the same as PersonsService obtained from injector', () => {
@@ -62,7 +62,7 @@ describe('SandboxComponent', () => {
     expect(component.injector.get(PersonService).personOfTheMonth)
       .toEqual({ firstName: 'new', lastName: 'guy' });
   });
-  // #endregion SERVICES
+  // #endregion
 
   // #region TEMPLATES
 
@@ -76,5 +76,5 @@ describe('SandboxComponent', () => {
     expect(button.innerHTML).toEqual(' Homer Simpson ');
     expect(button2.innerHTML).toEqual(' Moe Szyslak ');
   });
-  // #endregion TEMPLATES
+  // #endregion
 });

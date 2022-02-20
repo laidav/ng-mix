@@ -17,7 +17,7 @@ const mixins = composeMixins(LabelMixin, PersonsMixin)();
 })
 export class SandboxComponent extends mixins {
   persons$!: Observable<Person[]>
-  rightAway!: string;
+  suffix!: string;
 
   constructor(inj: Injector) { super(inj); }
 
@@ -25,9 +25,5 @@ export class SandboxComponent extends mixins {
     this.personSrvc.personOfTheMonth = { firstName: 'new', lastName: 'guy' };
     this.labelEvent.emit();
     this.alertPersons();
-  }
-
-  ngOnInit(): void {
-    super.ngOnInit();
   }
 }

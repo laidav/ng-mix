@@ -23,50 +23,6 @@ export const LabelMixin = (superClass = BaseClassInjector) => {
       super.ngOnChanges(changes);
       console.log(changes.label.currentValue, 'ngOnChanges in Label mixin');
     }
-
-    ngOnInit(): void {
-      //Call super's lifecycle method
-      super.ngOnInit();
-
-      //Implementation here
-      console.log(this.label, 'ngOnInit in Label mixin');
-    }		
-
-    ngDoCheck(): void {
-      super.ngDoCheck();
-      //Implementation here
-      console.log('ngDoCheck in Label Mixin');
-    }
-
-    ngAfterContentInit(): void {
-      super.ngAfterContentInit();
-      //Implementation here
-      console.log('ngAfterContentInit in Label Mixin');
-    }
-
-    ngAfterContentChecked(): void {
-      super.ngAfterContentChecked();
-      //Implementation here
-      console.log('ngAfterContentChecked in Label Mixin');
-    }
-
-    ngAfterViewInit(): void {
-      super.ngAfterViewInit();
-      //Implementation here
-      console.log('ngDoCheck in Label Mixin');
-    }
-
-    ngAfterViewChecked(): void {
-      super.ngAfterViewChecked();
-      //Implementation here
-      console.log('ngAfterViewChecked in Label Mixin');
-    }
-
-    ngOnDestroy(): void {
-      super.ngOnDestroy();
-      //Implementation here
-      console.log('ngOnDestroy in Label Mixin');
-    }
   }
 
   return Label;
