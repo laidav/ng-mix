@@ -1,18 +1,19 @@
 # NgMix
 
-Lightweight Angular schematic library for generating typescript mixins designed for Angular Components.
+Angular schematic library for generating typescript mixins designed for Angular Components.
 
 Typescript mixins are used to implement a composition pattern to share common logic across Angular components.
 
-## Table of Contents
+## Table of Contents <a name="table-of-contents"></a>
 1. [Installation](#installation)
 1. [Usage](#usage)
 	1. [CLI Command](#cli-command)
 	1. [Mixin Overview](#mixin-overview)
-	1. [Usage with Component & Lifecycle Hooks](#component-usage)
+	1. [Usage with Component](#component-usage)
 	1. [Composing with Mixins](#compose-mixins)
-	1. [@Input and @Outputs Decorators](#input-output)
-	1. [Services](#services)
+	1. [Angular Lifecycle Hooks](#lifecycle-hooks)
+	1. [Angular @Input and @Outputs Decorators](#input-output)
+	1. [Angular Services](#services)
 
 
 ## Installation <a name="installation"></a>
@@ -27,6 +28,7 @@ npm i ng-mix
 
 <b>CLI Command</b> <a name="cli-command"></a>
 - To create a mixin run the following command
+
 	```
 	ng g ng-mix:mixin
 	```
@@ -34,6 +36,7 @@ npm i ng-mix
 
 <b>Mixin Overview</b> <a name="mixin-overview"></a>
 - The following code will be generated (sample.mixin.ts)
+
 	```typescript
 	import { Injectable, OnInit } from '@angular/core';
 	import { BaseClassInjector } from 'ng-mix';
@@ -59,10 +62,16 @@ npm i ng-mix
 	```
 - All mixins will inherit [BaseClassInjector](https://github.com/laidav/ng-mix/blob/master/projects/ng-mix/src/lib/models/BaseClassInjector.ts)
 
-<b>Usage with Component & Lifecycle Hooks</b><a name="component-usage"></a>
+[Back to top](#table-of-contents)
+
+<br>
+
+<b>Usage with Component</b><a name="component-usage"></a>
+
+- Extend your component class with the mixin.
 
 ```typescript
-import { Component, OnInit, Injector } from '@angular/core';
+import { Component, Injector } from '@angular/core';
 import { SampleMixin } from './sample.mixin';
 
 @Component({
@@ -70,27 +79,21 @@ import { SampleMixin } from './sample.mixin';
   templateUrl: './app-component.html',
   styleUrls: ['./app.component.scss'],
 })
-export class AppComponent extends SampleMixin() implements OnInit {
+export class AppComponent extends SampleMixin() {
   
   constructor(public injector: Injector) {
-    //Provides injector to the mixin(s) to access Angular Services via DI
+    //Provides injector to the mixin(s) for access to Angular Services via DI
     super(injector);
   }
-
-  ngOnInit(): void {
-    //Make sure you call super's lifecycle hook methods to invoke the methods on the mixins
-    super.ngOnInit();
-  }
-
 }
 ```
 
-- Extend your component class with the mixin
 
 - Provide the injector to the mixins by passing it into the super call in the constructor.
 
-- All component lifecycle methods are available in the mixin. When implementing any lifecycle method in a component or mixin, ensure to call super.{lifecycleMethod} to ensure all life cycle methods are invoked
+[Back to top](#table-of-contents)
 
+<br>
 
 <b>Composing with Mixins</b><a name="compose-mixins"></a>
 
@@ -99,7 +102,7 @@ export class AppComponent extends SampleMixin() implements OnInit {
 	export class AppComponent extends SampleOneMixin(SampleTwoMixin())
 	```
 
-- You can also use the `composeMixins` helper function
+- You can also import the `composeMixins` function
 	```typescript
 	import { composeMixins } from 'ng-mix';
 
@@ -109,4 +112,108 @@ export class AppComponent extends SampleMixin() implements OnInit {
 	  ...
 	})
 	export class AppComponent extends Mixins
+	```
+
+[Back to top](#table-of-contents)
+
+<br>
+
+<b>Angular Lifecycle Hooks</b><a name="lifecycle-hooks"></a>
+
+- When implementing an Angular lifecycle hook method on the component or mixin <b>always call super.[ lifecycle method]</b> when mixins are used to ensure the lifecycle method for all mixins are invoked.
+
+	```typescript
+	//sample.mixin.ts
+
+	export const SampleMixin = (superClass = BaseClassInjector) => {
+
+	  @Injectable()
+	  class Sample extends superClass {
+	    ...
+	    ngOnInit(): void {
+	      super.ngOnInit();
+	      //Implementation here
+	    }		
+            ...
+	  }
+
+	  return Sample;
+	}
+	```
+
+	```typescript
+
+	//app.component.ts
+
+	@Component({
+	  ...
+	})
+	export class AppComponent extends SampleMixin() { 
+	  ...
+	  ngOnInit(): void {
+	    super.ngOnInit();
+	    //Implementation here
+	  }		
+	  ...
+    }
+	```
+
+[Back to top](#table-of-contents)
+
+<br>
+
+<b>Angular @Input and @Outputs Decorators</b><a name="input-output"></a>
+- If `@Input`/`@Output` decorators are used in mixins, they will need to be declared in the `@Component` decorator of the component.
+
+	```typescript
+	//sample.mixin.ts
+
+	export const SampleMixin = (superClass = BaseClassInjector) => {
+
+	  @Injectable()
+	  class Sample extends superClass {
+	    @Input sampleInput = '';
+	    @Output sampleOutput = new EventEmitter<any>();
+	    
+	    ...
+	  }
+
+	  return Sample;
+	}
+	```
+
+	```typescript
+
+	//app.component.ts
+
+	@Component({
+	  ...
+	  inputs: ['sampleInput'],
+	  outputs: ['sampleOutput']
+	})
+	export class AppComponent extends SampleMixin() { ... }
+	```
+[Back to top](#table-of-contents)
+
+<br>
+
+<b>Angular Services</b><a name="services"></a>
+
+- Services can be accessed via Angular's `Injector` which is made available by the `BaseClassInjector`.
+	```typescript
+	//sample.mixin.ts
+	import { SampleService } from './sample.service.ts'
+
+	export const SampleMixin = (superClass = BaseClassInjector) => {
+
+	  @Injectable()
+	  class Sample extends superClass {
+
+	    sampleService = this.injector.get(SampleService);
+	    
+	    ...
+	  }
+
+	  return Sample;
+	}
 	```
