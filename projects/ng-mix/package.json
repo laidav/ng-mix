@@ -1,6 +1,6 @@
 {
   "name": "ng-mix",
-  "version": "0.0.1-beta.4",
+  "version": "1.0.0-beta.1",
   "schematics": "./schematics/collection.json",
   "ng-add": {
     "save": "devDependencies"
