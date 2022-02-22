@@ -1,6 +1,6 @@
 {
   "name": "ng-mix",
-  "version": "1.0.0-beta.2",
+  "version": "1.0.0-beta.3",
   "schematics": "./schematics/collection.json",
   "ng-add": {
     "save": "devDependencies"
@@ -19,5 +19,9 @@
   "scripts": {
     "build": "tsc -p tsconfig.schematics.json",
     "postbuild": "copyfiles schematics/*/schema.json schematics/*/files/** schematics/collection.json ../../dist/ng-mix/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/laidav/ng-mix"
   }
 }
