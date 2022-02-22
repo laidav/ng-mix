@@ -2,7 +2,7 @@
 
 Angular schematic library for generating typescript mixins designed for Angular Components.
 
-Typescript mixins are used to implement a composition pattern to share common logic across Angular components.
+Typescript mixins are then used to implement a composition pattern to share common logic across Angular components.
 
 ## Table of Contents <a name="table-of-contents"></a>
 1. [Installation](#installation)
