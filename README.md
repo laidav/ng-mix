@@ -89,7 +89,7 @@ export class AppComponent extends SampleMixin() {
 ```
 
 
-- Provide the injector to the mixins by passing it into the super call in the constructor.
+- Provide the injector to the mixin(s) by passing it into the super call in the constructor.
 
 [Back to top](#table-of-contents)
 
