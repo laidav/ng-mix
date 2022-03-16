@@ -16,7 +16,6 @@ export class TypeaheadComponent implements OnInit {
   @Output() optionSelected = new EventEmitter<Option<any>>();
 
   searchControl = new FormControl();
-
   filteredOptions$: Observable<Option<any>[]> | null = null;
 
   constructor() { }
@@ -26,14 +25,14 @@ export class TypeaheadComponent implements OnInit {
     this.optionSelected.emit(option);
   };
 
+  private _filter(value: string): Option<any>[] {
+    return this.options.filter(option => !this.selectedOptions.includes(option) && option.label.includes(value));
+  }
+
   ngOnInit() {
     this.filteredOptions$ = this.searchControl.valueChanges.pipe(
       startWith(''),
       map(value => this._filter(value)),
     );
-  }
-
-  private _filter(value: string): Option<any>[] {
-    return this.options.filter(option => !this.selectedOptions.includes(option) && option.label.includes(value));
   }
 }
