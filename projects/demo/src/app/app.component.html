@@ -1,8 +1,7 @@
-<app-sandbox [label]="label" (labelEvent)="onEvent($event)"></app-sandbox>
-<button class="toggle-drinkers" (click)="changeLabel()">Toggle Drinkers</button>
-
-<br>
-<br>
+<div [hidden]="true">
+  <app-sandbox [label]="label" (labelEvent)="onEvent($event)"></app-sandbox>
+  <button class="toggle-drinkers" (click)="changeLabel()">Toggle Drinkers</button>
+</div>
 <br>
 <br>
 <app-employee-list></app-employee-list>
