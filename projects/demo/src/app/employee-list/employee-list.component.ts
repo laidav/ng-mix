@@ -1,20 +1,21 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Injector } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Employee } from '../models/Employee';
-import { EmployeeService } from '../../services/employee.service';
 import { Option } from '../models/Option';
 import { map } from 'rxjs/operators';
+import { EmployeeListMixin } from '../../mixins/employee-list.mixin';
+import { Employee } from '../models/Employee';
 
 @Component({
   selector: 'app-employee-list',
   templateUrl: './employee-list.component.html',
   styleUrls: ['./employee-list.component.scss']
 })
-export class EmployeeListComponent implements OnInit {
+export class EmployeeListComponent extends EmployeeListMixin() implements OnInit {
   employeeOptionList$: Observable<Option<Employee>[]> | null = null;
   selectedOptions: Option<Employee>[] = [];
+  employeeList$!: Observable<Employee[]>;
 
-  constructor(private employeeSrvc: EmployeeService) { }
+  constructor(public inj: Injector) { super(inj); }
 
   optionToggled(option: Option<Employee>) {
     const index = this.selectedOptions.indexOf(option);
@@ -31,7 +32,9 @@ export class EmployeeListComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.employeeOptionList$ = this.employeeSrvc.getEmployees().pipe(
+    super.ngOnInit();
+
+    this.employeeOptionList$ = this.employeeList$.pipe(
       map((employees) =>
         employees.map((employee) => ({
           label: `${employee.firstName} ${employee.lastName}`,
