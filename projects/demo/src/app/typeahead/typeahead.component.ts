@@ -1,38 +1,29 @@
-import { Component, OnInit, Output, Input, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, Injector, EventEmitter } from '@angular/core';
 import { Option } from '../models/Option';
-import { FormControl } from '@angular/forms';
-import { Observable } from 'rxjs';
-import { startWith, map } from 'rxjs/operators';
+import { map } from 'rxjs/operators';
+import { TypeaheadMixin } from './typeahead.mixin';
 
 @Component({
   selector: 'app-typeahead',
   templateUrl: './typeahead.component.html',
-  styleUrls: ['./typeahead.component.scss']
+  styleUrls: ['./typeahead.component.scss'],
+  inputs: ['options', 'selectedOptions'],
 })
-export class TypeaheadComponent implements OnInit {
-  @Input() options: Option<any>[] = [];
-  @Input() selectedOptions: Option<any>[] = [];
+export class TypeaheadComponent extends TypeaheadMixin() implements OnInit {
 
   @Output() optionSelected = new EventEmitter<Option<any>>();
 
-  searchControl = new FormControl();
-  filteredOptions$: Observable<Option<any>[]> | null = null;
-
-  constructor() { }
+  constructor(public inj: Injector) { super(inj); }
 
   onOptionSelect(option: Option<any>) {
     this.searchControl.setValue('');
     this.optionSelected.emit(option);
   };
 
-  private _filter(value: string): Option<any>[] {
-    return this.options.filter(option => !this.selectedOptions.includes(option) && option.label.includes(value));
-  }
-
   ngOnInit() {
-    this.filteredOptions$ = this.searchControl.valueChanges.pipe(
-      startWith(''),
-      map(value => this._filter(value)),
-    );
+    super.ngOnInit();
+
+    this.filteredOptions$ = this.filteredOptions$?.pipe(
+      map((options) => options?.filter((option) => !this.selectedOptions?.includes(option)))) || null;
   }
 }

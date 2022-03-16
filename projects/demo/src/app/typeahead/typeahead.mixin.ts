@@ -1,20 +1,32 @@
-import { Injectable, OnInit } from '@angular/core';
 import { BaseClassInjector } from 'ng-mix';
+import { Injectable, OnInit, Input } from '@angular/core';
+import { Option } from '../models/Option';
+import { FormControl } from '@angular/forms';
+import { Observable } from 'rxjs';
+import { startWith, map } from 'rxjs/operators';
 
 export const TypeaheadMixin = (superClass = BaseClassInjector) => {
 
   @Injectable()
   class Typeahead extends superClass implements OnInit {
-	
-    // You can inject services from the BaseClassInjector i.e
-    // myService = this.injector.get(MyService);
+    @Input() options: Option<any>[] = [];
+    @Input() selectedOptions: Option<any>[] = [];
 
-    ngOnInit(): void {
-      //Call super's lifecycle method
+    searchControl = new FormControl();
+    filteredOptions$: Observable<Option<any>[]> | null = null;
+
+    private _filter(value: string): Option<any>[] {
+      return this.options.filter(option => option.label.includes(value));
+    }
+
+    ngOnInit() {
       super.ngOnInit();
 
-      //Implementation here
-    }		
+      this.filteredOptions$ = this.searchControl.valueChanges.pipe(
+        startWith(''),
+        map(value => this._filter(value)),
+      );
+    }
   }
 
   return Typeahead;
