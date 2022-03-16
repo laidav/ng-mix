@@ -15,6 +15,10 @@ export class EmployeeListComponent implements OnInit {
 
   selectedOptions: Option<Employee>[] = [];
 
+  addOption(option: Option<Employee>) {
+    this.selectedOptions.push(option);
+  }
+
   constructor(private employeeSrvc: EmployeeService) { }
 
   ngOnInit() {

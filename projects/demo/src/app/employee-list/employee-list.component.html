@@ -2,7 +2,7 @@
   *ngIf="employeeOptionList$ | async as employeeOptionList"
   [options]="employeeOptionList"
   [selectedOptions]="selectedOptions"
-  (optionSelected)="selectedOptions.push($event)">
+  (optionSelected)="addOption($event)">
 </app-typeahead>
 
 <h2>Selected Employees</h2>
