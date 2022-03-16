@@ -26,6 +26,26 @@ export class EmployeeService {
         lastName: 'Smithers',
         jobTitle: 'Assistant'
       },
+      {
+        firstName: 'Ned',
+        lastName: 'Flanders',
+        jobTitle: 'Neighbour'
+      },
+      {
+        firstName: 'Maude',
+        lastName: 'Flanders',
+        jobTitle: 'Assistant'
+      },
+      {
+        firstName: 'Todd',
+        lastName: 'Flanders',
+        jobTitle: 'Assistant'
+      },
+      {
+        firstName: 'Rod',
+        lastName: 'Flanders',
+        jobTitle: 'Assistant'
+      },
     ]);
   }
 }
