@@ -1,0 +1,17 @@
+<mat-form-field class="av-typeahead w-100">
+	<input
+    type="text"
+    [formControl]="searchControl"
+    [matAutocomplete]="autoComp"
+    placeholder="'Search Employees'"
+    matInput 
+  />
+	<mat-autocomplete #autoComp="matAutocomplete" panelWidth="297px">
+		<ng-container *ngIf="filteredOptions$ | async as filteredOptions">
+			<mat-option *ngFor="let option of filteredOptions" [value]="option.value"
+				(onSelectionChange)="optionSelected.emit(option)">
+				<span>{{ option.label }}</span>
+			</mat-option>
+		</ng-container>
+	</mat-autocomplete>
+</mat-form-field>
