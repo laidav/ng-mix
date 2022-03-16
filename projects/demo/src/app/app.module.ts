@@ -37,8 +37,11 @@ import { MatSortModule } from '@angular/material/sort';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { MatDividerModule } from '@angular/material/divider';
+import { TypeaheadMultiSelectComponent } from './typeahead-multi-select/typeahead-multi-select.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 const matModule = [
+  BrowserAnimationsModule,
   MatSidenavModule,
   MatInputModule,
   MatFormFieldModule,
@@ -76,7 +79,8 @@ const matModule = [
     SandboxComponent,
     BeerCountComponent,
     EmployeeListComponent,
-    TypeaheadComponent
+    TypeaheadComponent,
+    TypeaheadMultiSelectComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,28 @@
+<mat-form-field class="typeahead w-100">
+  <input
+    #formInputEl
+    type="text"
+    placeholder="Search Name"
+    matInput
+    [matAutocomplete]="autoComp"
+    [formControl]="searchControl" />
+
+  <mat-autocomplete #autoComp="matAutocomplete" panelWidth="297px">
+    <ng-container *ngIf="filteredOptions$ | async as filteredOptions">
+      <!-- mat-auto-complete needs at least one mat-option in the dom to be visible -->
+      <div [hidden]="true">
+        <mat-option></mat-option>
+      </div>
+      <div class="typeahead__option" *ngFor="let option of filteredOptions">
+        <mat-checkbox
+          [checked]="selectedOptions.includes(option)"
+          (change)="optionToggled.emit(option)"
+        >
+        {{ option.label }}
+        </mat-checkbox>
+      </div>
+    </ng-container>
+  </mat-autocomplete>
+</mat-form-field>
+
+

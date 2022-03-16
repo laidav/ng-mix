@@ -1,11 +1,18 @@
-<app-typeahead 
-  *ngIf="employeeOptionList$ | async as employeeOptionList"
-  [options]="employeeOptionList"
-  [selectedOptions]="selectedOptions"
-  (optionSelected)="addOption($event)">
-</app-typeahead>
+<div *ngIf="employeeOptionList$ | async as employeeOptionList">
+  <app-typeahead 
+    [options]="employeeOptionList"
+    [selectedOptions]="selectedOptions"
+    (optionSelected)="addOption($event)">
+  </app-typeahead>
 
-<h2>Selected Employees</h2>
-<div *ngFor="let option of selectedOptions">
-  {{ option.label }}
+  <app-typeahead-multi-select
+    [options]="employeeOptionList"
+    [selectedOptions]="selectedOptions"
+    (optionToggled)="optionToggled($event)">
+  ></app-typeahead-multi-select>
+
+  <h2>Selected Employees</h2>
+  <div *ngFor="let option of selectedOptions">
+    {{ option.label }}
+  </div>
 </div>

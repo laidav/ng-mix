@@ -12,14 +12,23 @@ import { map } from 'rxjs/operators';
 })
 export class EmployeeListComponent implements OnInit {
   employeeOptionList$: Observable<Option<Employee>[]> | null = null;
-
   selectedOptions: Option<Employee>[] = [];
+
+  constructor(private employeeSrvc: EmployeeService) { }
+
+  optionToggled(option: Option<Employee>) {
+    const index = this.selectedOptions.indexOf(option);
+
+    if (index > -1) {
+      this.selectedOptions.splice(index, 1);
+    } else {
+      this.addOption(option);
+    }
+  }
 
   addOption(option: Option<Employee>) {
     this.selectedOptions.push(option);
   }
-
-  constructor(private employeeSrvc: EmployeeService) { }
 
   ngOnInit() {
     this.employeeOptionList$ = this.employeeSrvc.getEmployees().pipe(
