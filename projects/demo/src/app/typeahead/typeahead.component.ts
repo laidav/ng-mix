@@ -27,6 +27,6 @@ export class TypeaheadComponent implements OnInit {
   }
 
   private _filter(value: string): Option<any>[] {
-    return this.options.filter(option => option.label.toLowerCase().includes(value));
+    return this.options.filter(option => option.label.includes(value));
   }
 }
