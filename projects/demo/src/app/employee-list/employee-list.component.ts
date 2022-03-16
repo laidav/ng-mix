@@ -13,16 +13,17 @@ import { map } from 'rxjs/operators';
 export class EmployeeListComponent implements OnInit {
   employeeOptionList$: Observable<Option<Employee>[]> | null = null;
 
+  selectedOptions: Option<Employee>[] = [];
+
   constructor(private employeeSrvc: EmployeeService) { }
 
   ngOnInit() {
-    this.employeeOptionList$ = this.employeeSrvc.getEmployees()
-      .pipe(
-        map((employees) => employees.map((employee) => ({
-            label: `${employee.firstName} ${employee.lastName}`,
-            value: employee 
-          })
-        ))
-      );
+    this.employeeOptionList$ = this.employeeSrvc.getEmployees().pipe(
+      map((employees) =>
+        employees.map((employee) => ({
+          label: `${employee.firstName} ${employee.lastName}`,
+          value: employee
+        })))
+    );
   }
 }

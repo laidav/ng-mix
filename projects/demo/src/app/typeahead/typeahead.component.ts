@@ -11,6 +11,8 @@ import { startWith, map } from 'rxjs/operators';
 })
 export class TypeaheadComponent implements OnInit {
   @Input() options: Option<any>[] = [];
+  @Input() selectedOptions: Option<any>[] = [];
+
   @Output() optionSelected = new EventEmitter<Option<any>>();
 
   searchControl = new FormControl();
@@ -18,6 +20,11 @@ export class TypeaheadComponent implements OnInit {
   filteredOptions$: Observable<Option<any>[]> | null = null;
 
   constructor() { }
+
+  onOptionSelect(option: Option<any>) {
+    this.searchControl.setValue('');
+    this.optionSelected.emit(option);
+  };
 
   ngOnInit() {
     this.filteredOptions$ = this.searchControl.valueChanges.pipe(
@@ -27,6 +34,6 @@ export class TypeaheadComponent implements OnInit {
   }
 
   private _filter(value: string): Option<any>[] {
-    return this.options.filter(option => option.label.includes(value));
+    return this.options.filter(option => !this.selectedOptions.includes(option) && option.label.includes(value));
   }
 }

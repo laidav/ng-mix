@@ -1,4 +1,11 @@
 <app-typeahead 
   *ngIf="employeeOptionList$ | async as employeeOptionList"
-  [options]="employeeOptionList">
+  [options]="employeeOptionList"
+  [selectedOptions]="selectedOptions"
+  (optionSelected)="selectedOptions.push($event)">
 </app-typeahead>
+
+<h2>Selected Employees</h2>
+<div *ngFor="let option of selectedOptions">
+  {{ option.label }}
+</div>
