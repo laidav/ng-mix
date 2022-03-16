@@ -39,7 +39,6 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
 import { MatDividerModule } from '@angular/material/divider';
 
 const matModule = [
-  //TODO: browser module should be at root level of applicationBrowserAnimationsModule,
   MatSidenavModule,
   MatInputModule,
   MatFormFieldModule,

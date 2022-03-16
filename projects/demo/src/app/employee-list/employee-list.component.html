@@ -1,1 +1,4 @@
-<h1>Employee List</h1>
+<app-typeahead 
+  *ngIf="employeeOptionList$ | async as employeeOptionList"
+  [options]="employeeOptionList">
+</app-typeahead>
