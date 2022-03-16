@@ -106,7 +106,7 @@ export class AppComponent extends SampleMixin() {
 	```typescript
 	import { composeMixins } from 'ng-mix';
 
-	const Mixins = composeMixins(SampleOneMixin, SampleTwoMixin);
+	const Mixins = composeMixins(SampleOneMixin, SampleTwoMixin)();
 
 	@Component({
 	  ...
