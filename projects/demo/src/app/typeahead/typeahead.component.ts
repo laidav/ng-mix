@@ -2,6 +2,7 @@ import { Component, OnInit, Output, Injector, EventEmitter } from '@angular/core
 import { Option } from '../models/Option';
 import { map } from 'rxjs/operators';
 import { TypeaheadMixin } from './typeahead.mixin';
+import { Base } from 'ng-mix';
 
 @Component({
   selector: 'app-typeahead',
@@ -9,7 +10,7 @@ import { TypeaheadMixin } from './typeahead.mixin';
   styleUrls: ['./typeahead.component.scss'],
   inputs: ['options', 'selectedOptions'],
 })
-export class TypeaheadComponent extends TypeaheadMixin() implements OnInit {
+export class TypeaheadComponent extends TypeaheadMixin(Base) implements OnInit {
 
   @Output() optionSelected = new EventEmitter<Option<any>>();
 

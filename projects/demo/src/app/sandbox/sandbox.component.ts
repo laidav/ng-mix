@@ -2,11 +2,9 @@ import { Component } from '@angular/core';
 import { PersonsMixin } from '../../mixins/persons.mixin';
 import { Injector } from '@angular/core';
 import { LabelMixin } from '../../mixins/label.mixin';
-import { Observable } from 'rxjs';
-import { Person } from '../models/Person';
-import { composeMixins } from 'ng-mix';
+import { Base } from 'ng-mix';
 
-const mixins = composeMixins(LabelMixin, PersonsMixin)();
+const mixins = LabelMixin(PersonsMixin(Base));
 
 @Component({
   selector: 'app-sandbox',
@@ -16,8 +14,6 @@ const mixins = composeMixins(LabelMixin, PersonsMixin)();
   outputs: ['labelEvent']
 })
 export class SandboxComponent extends mixins {
-  persons$!: Observable<Person[]>
-  suffix!: string;
 
   constructor(inj: Injector) { super(inj); }
 

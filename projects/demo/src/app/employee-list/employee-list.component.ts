@@ -4,13 +4,14 @@ import { Option } from '../models/Option';
 import { map } from 'rxjs/operators';
 import { EmployeeListMixin } from '../../mixins/employee-list.mixin';
 import { Employee } from '../models/Employee';
+import { Base } from 'ng-mix';
 
 @Component({
   selector: 'app-employee-list',
   templateUrl: './employee-list.component.html',
   styleUrls: ['./employee-list.component.scss']
 })
-export class EmployeeListComponent extends EmployeeListMixin() implements OnInit {
+export class EmployeeListComponent extends EmployeeListMixin(Base) implements OnInit {
   employeeOptionList$: Observable<Option<Employee>[]> | null = null;
   selectedOptions: Option<Employee>[] = [];
   employeeList$!: Observable<Employee[]>;
