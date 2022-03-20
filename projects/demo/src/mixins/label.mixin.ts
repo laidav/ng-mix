@@ -4,13 +4,14 @@ import {
   Input,
   Output,
   EventEmitter,
-  SimpleChanges
+  SimpleChanges,
+  Injector
 } from '@angular/core';
-import { BaseClassInjector } from 'ng-mix';
+import { BaseInjectorConstructor } from 'ng-mix';
 
 //Example with Inputs & Outputs
 
-export const LabelMixin = (superClass = BaseClassInjector) => {
+export const LabelMixin = <Tbase extends BaseInjectorConstructor>(superClass: Tbase) => {
 
   @Injectable()
   class Label extends superClass implements OnInit {

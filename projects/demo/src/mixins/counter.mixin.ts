@@ -1,9 +1,9 @@
 import { Injectable, OnInit } from '@angular/core';
-import { BaseClassInjector } from 'ng-mix';
+import { BaseInjectorConstructor} from 'ng-mix';
 import { Subscription, interval } from 'rxjs';
 import { map } from 'rxjs/operators';
 
-export const CounterMixin = (superClass = BaseClassInjector) => {
+export const CounterMixin =  <Tbase extends BaseInjectorConstructor>(superClass: Tbase) => {
 
   @Injectable()
   class Counter extends superClass implements OnInit {

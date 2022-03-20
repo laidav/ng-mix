@@ -2,11 +2,11 @@ import { Injectable, OnInit, SimpleChanges } from '@angular/core';
 import { PersonService } from '../services/person.service';
 import { Observable } from 'rxjs';
 import { Person } from '../app/models/Person';
-import { BaseClassInjector } from 'ng-mix';
+import { BaseInjectorConstructor } from 'ng-mix';
 
 //Example with Service using the injector
 
-export const PersonsMixin = (superClass = BaseClassInjector) => {
+export const PersonsMixin = <Tbase extends BaseInjectorConstructor>(superClass: Tbase) => {
   @Injectable()
   class Persons extends superClass implements OnInit {
     persons$: Observable<Person[]> = new Observable;
