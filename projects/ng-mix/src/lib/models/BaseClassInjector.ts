@@ -1,6 +1,6 @@
 import { 
   Injectable,
-  Injector as AngularInjector,
+  Injector,
   OnChanges,
   OnInit,
   DoCheck,
@@ -10,6 +10,7 @@ import {
   AfterViewChecked,
   OnDestroy,
   SimpleChanges,
+  Inject,
 } from "@angular/core";
 
 type GConstructor<T = {}> = new (...args: any[]) => T;
@@ -27,18 +28,16 @@ abstract class BaseClassInjector implements
   AfterViewChecked,
   OnDestroy {
 
-    constructor(public injector: AngularInjector) {}
+  constructor(public injector: Injector) {}
 
-    ngOnChanges(changes: SimpleChanges): void {}
-    ngOnInit(): void {}
-    ngDoCheck(): void {}
-    ngAfterContentInit(): void {}
-    ngAfterContentChecked(): void {}
-    ngAfterViewInit(): void {}
-    ngAfterViewChecked(): void {}
-    ngOnDestroy(): void {}
+  ngOnChanges(changes: SimpleChanges): void {}
+  ngOnInit(): void {}
+  ngDoCheck(): void {}
+  ngAfterContentInit(): void {}
+  ngAfterContentChecked(): void {}
+  ngAfterViewInit(): void {}
+  ngAfterViewChecked(): void {}
+  ngOnDestroy(): void {}
 }
 
-export class BaseInjector extends BaseClassInjector {};
-
-export const Injector = AngularInjector;
+export class Base extends BaseClassInjector {};
