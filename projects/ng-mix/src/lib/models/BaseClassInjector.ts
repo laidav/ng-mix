@@ -17,7 +17,7 @@ type GConstructor<T = {}> = new (...args: any[]) => T;
 export type BaseInjectorConstructor = GConstructor<BaseClassInjector>;
 
 @Injectable()
-abstract class BaseClassInjector implements
+export abstract class BaseClassInjector implements
   OnChanges,
   OnInit,
   DoCheck,
