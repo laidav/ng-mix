@@ -9,8 +9,7 @@ import {
   AfterViewInit,
   AfterViewChecked,
   OnDestroy,
-  SimpleChanges,
-  Inject,
+  SimpleChanges
 } from "@angular/core";
 
 type GConstructor<T = {}> = new (...args: any[]) => T;
