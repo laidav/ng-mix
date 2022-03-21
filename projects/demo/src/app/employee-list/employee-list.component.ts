@@ -14,7 +14,6 @@ import { Base } from 'ng-mix';
 export class EmployeeListComponent extends EmployeeListMixin(Base) implements OnInit {
   employeeOptionList$: Observable<Option<Employee>[]> | null = null;
   selectedOptions: Option<Employee>[] = [];
-  employeeList$!: Observable<Employee[]>;
 
   constructor(public inj: Injector) { super(inj); }
 
@@ -35,12 +34,12 @@ export class EmployeeListComponent extends EmployeeListMixin(Base) implements On
   ngOnInit() {
     super.ngOnInit();
 
-    this.employeeOptionList$ = this.employeeList$.pipe(
+    this.employeeOptionList$ = this.employeeList$?.pipe(
       map((employees) =>
         employees.map((employee) => ({
           label: `${employee.firstName} ${employee.lastName}`,
           value: employee
         })))
-    );
+    ) || null;
   }
 }
