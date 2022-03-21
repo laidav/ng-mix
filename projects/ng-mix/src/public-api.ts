@@ -4,4 +4,4 @@
 
 export * from './lib/ng-mix.module';
 export * from './lib/models/BaseClassInjector';
-export * from './lib/helpers/combineMixins';
+export * from './lib/helpers/composeMixins';
