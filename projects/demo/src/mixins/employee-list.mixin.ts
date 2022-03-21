@@ -1,10 +1,10 @@
 import { Injectable, OnInit } from '@angular/core';
-import { BaseClassInjector } from 'ng-mix';
+import { BaseInjectorConstructor } from 'ng-mix';
 import { Observable } from 'rxjs';
 import { Employee } from '../app/models/Employee';
 import { EmployeeService } from '../services/employee.service';
 
-export const EmployeeListMixin = (superClass = BaseClassInjector) => {
+export const EmployeeListMixin = <Tbase extends BaseInjectorConstructor>(superClass: Tbase) => {
 
   @Injectable()
   class EmployeeList extends superClass implements OnInit {

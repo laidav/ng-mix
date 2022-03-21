@@ -1,11 +1,11 @@
-import { BaseClassInjector } from 'ng-mix';
+import { BaseInjectorConstructor } from 'ng-mix';
 import { Injectable, OnInit, Input } from '@angular/core';
 import { Option } from '../models/Option';
 import { FormControl } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { startWith, map } from 'rxjs/operators';
 
-export const TypeaheadMixin = (superClass = BaseClassInjector) => {
+export const TypeaheadMixin = <Tbase extends BaseInjectorConstructor>(superClass: Tbase) => {
 
   @Injectable()
   class Typeahead extends superClass implements OnInit {

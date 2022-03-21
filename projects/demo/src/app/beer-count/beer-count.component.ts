@@ -1,9 +1,9 @@
 import { Component, Injector } from '@angular/core';
 import { CounterMixin } from '../../mixins/counter.mixin';
 import { LabelMixin } from '../../mixins/label.mixin';
-import { composeMixins } from 'ng-mix';
+import { Base } from 'ng-mix';
 
-const mixins = composeMixins(LabelMixin, CounterMixin)();
+const mixins = LabelMixin(CounterMixin(Base));
 
 @Component({
   selector: 'app-beer-count',

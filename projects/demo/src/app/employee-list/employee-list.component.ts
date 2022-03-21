@@ -4,16 +4,16 @@ import { Option } from '../models/Option';
 import { map } from 'rxjs/operators';
 import { EmployeeListMixin } from '../../mixins/employee-list.mixin';
 import { Employee } from '../models/Employee';
+import { Base } from 'ng-mix';
 
 @Component({
   selector: 'app-employee-list',
   templateUrl: './employee-list.component.html',
   styleUrls: ['./employee-list.component.scss']
 })
-export class EmployeeListComponent extends EmployeeListMixin() implements OnInit {
+export class EmployeeListComponent extends EmployeeListMixin(Base) implements OnInit {
   employeeOptionList$: Observable<Option<Employee>[]> | null = null;
   selectedOptions: Option<Employee>[] = [];
-  employeeList$!: Observable<Employee[]>;
 
   constructor(public inj: Injector) { super(inj); }
 
@@ -34,12 +34,12 @@ export class EmployeeListComponent extends EmployeeListMixin() implements OnInit
   ngOnInit() {
     super.ngOnInit();
 
-    this.employeeOptionList$ = this.employeeList$.pipe(
+    this.employeeOptionList$ = this.employeeList$?.pipe(
       map((employees) =>
         employees.map((employee) => ({
           label: `${employee.firstName} ${employee.lastName}`,
           value: employee
         })))
-    );
+    ) || null;
   }
 }

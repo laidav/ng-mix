@@ -1,7 +1,7 @@
 import { Injectable, OnInit } from '@angular/core';
-import { BaseClassInjector } from 'ng-mix';
+import { BaseInjectorConstructor } from 'ng-mix';
 
-export const <%= classify(name) %>Mixin = (superClass = BaseClassInjector) => {
+export const <%= classify(name) %>Mixin = <Tbase extends BaseInjectorConstructor>(superClass: Tbase) => {
 
   @Injectable()
   class <%= classify(name) %> extends superClass implements OnInit {
