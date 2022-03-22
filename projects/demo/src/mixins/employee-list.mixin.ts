@@ -7,7 +7,7 @@ import { EmployeeService } from '../services/employee.service';
 export const EmployeeListMixin = <Tbase extends BaseInjectorConstructor>(superClass: Tbase) => {
 
   @Injectable()
-  class EmployeeList extends superClass implements OnInit {
+  abstract class EmployeeList extends superClass implements OnInit {
     employeeList$: Observable<Employee[]> | null = null
     employeeSrvc = this.injector.get(EmployeeService);
 	

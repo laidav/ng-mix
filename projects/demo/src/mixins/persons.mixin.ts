@@ -8,7 +8,7 @@ import { BaseInjectorConstructor } from 'ng-mix';
 
 export const PersonsMixin = <Tbase extends BaseInjectorConstructor>(superClass: Tbase) => {
   @Injectable()
-  class Persons extends superClass implements OnInit {
+  abstract class Persons extends superClass implements OnInit {
     persons$: Observable<Person[]> = new Observable;
 
     personSrvc = this.injector.get(PersonService);

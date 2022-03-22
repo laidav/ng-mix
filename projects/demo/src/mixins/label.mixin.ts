@@ -5,7 +5,6 @@ import {
   Output,
   EventEmitter,
   SimpleChanges,
-  Injector
 } from '@angular/core';
 import { BaseInjectorConstructor } from 'ng-mix';
 
@@ -14,7 +13,7 @@ import { BaseInjectorConstructor } from 'ng-mix';
 export const LabelMixin = <Tbase extends BaseInjectorConstructor>(superClass: Tbase) => {
 
   @Injectable()
-  class Label extends superClass implements OnInit {
+  abstract class Label extends superClass implements OnInit {
     @Input() label = '';
     @Output() labelEvent = new EventEmitter<any>();
 

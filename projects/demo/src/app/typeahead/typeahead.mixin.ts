@@ -8,7 +8,7 @@ import { startWith, map } from 'rxjs/operators';
 export const TypeaheadMixin = <Tbase extends BaseInjectorConstructor>(superClass: Tbase) => {
 
   @Injectable()
-  class Typeahead extends superClass implements OnInit {
+  abstract class Typeahead extends superClass implements OnInit {
     @Input() options: Option<any>[] = [];
     @Input() selectedOptions: Option<any>[] = [];
 

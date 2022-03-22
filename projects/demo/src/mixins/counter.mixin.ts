@@ -6,7 +6,7 @@ import { map } from 'rxjs/operators';
 export const CounterMixin =  <Tbase extends BaseInjectorConstructor>(superClass: Tbase) => {
 
   @Injectable()
-  class Counter extends superClass implements OnInit {
+  abstract class Counter extends superClass implements OnInit {
     subscriptions = new Subscription();
     count = 0;
     count2 = 2;
