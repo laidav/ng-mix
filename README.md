@@ -102,7 +102,7 @@ export class AppComponent extends SampleMixin(Base) {
 - You can mix mixins together as shown
 	```typescript
   const Mixins = SampleOneMixin(SampleTwoMixin(Base));
-	export class AppComponent extends Mixins {
+  export class AppComponent extends Mixins {
     ...
   };
 	```
