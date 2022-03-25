@@ -38,27 +38,27 @@ npm i ng-mix
 - The following code will be generated (sample.mixin.ts)
 
 	```typescript
-	import { Injectable, OnInit } from '@angular/core';
+  import { Injectable, OnInit } from '@angular/core';
   import { BaseInjectorConstructor } from 'ng-mix';
 
-	export const SampleMixin = <Tbase extends BaseInjectorConstructor>(superClass: Tbase) => {
+  export const SampleMixin = <Tbase extends BaseInjectorConstructor>(superClass: Tbase) => {
 
-	  @Injectable()
-	  class Sample extends superClass implements OnInit {
-		
-	    // You can inject services from the BaseClassInjector i.e
-	    // myService = this.injector.get(MyService);
+    @Injectable()
+    class Sample extends superClass implements OnInit {
+    
+      // You can inject services from the BaseClassInjector i.e
+      // myService = this.injector.get(MyService);
 
-	    ngOnInit(): void {
-	      //Call super's lifecycle method
-	      super.ngOnInit();
+      ngOnInit(): void {
+        //Call super's lifecycle method
+        super.ngOnInit();
 
-	      //Implementation here
-	    }		
-	  }
+        //Implementation here
+      }		
+    }
 
-	  return Sample;
-	}
+    return Sample;
+  }
 	```
 - All mixins will inherit [BaseClassInjector](https://github.com/laidav/ng-mix/blob/master/projects/ng-mix/src/lib/models/BaseClassInjector.ts)
 
