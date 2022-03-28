@@ -1,8 +1,8 @@
 # NgMix
 
-Angular schematic library for generating typescript mixins designed for Angular Components.
+Angular schematic library for generating TypeScript mixins designed for Angular Components.
 
-Typescript mixins are then used to implement a composition pattern to share common logic across Angular components.
+TypeScript mixins are then used to implement a composition pattern to share common logic across Angular components.
 
 ## Table of Contents <a name="table-of-contents"></a>
 1. [Requirements](#requirements)
