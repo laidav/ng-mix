@@ -117,7 +117,7 @@ export class AppComponent extends SampleMixin(Base) {
 
 <b>Angular Lifecycle Hooks</b><a name="lifecycle-hooks"></a>
 
-- When implementing an Angular lifecycle hook method on the mixin or component using mixin(s), <b>always call super.[ lifecycle method]</b> when mixins are used to ensure the lifecycle methods for all mixins are invoked.
+- When implementing an Angular lifecycle hook method on a mixin or component using mixin(s), <b>always call super.[ lifecycle method]</b> when mixins are used to ensure the lifecycle methods for all mixins are invoked.
 
 	```typescript
 	//sample.mixin.ts
