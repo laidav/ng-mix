@@ -12,10 +12,6 @@ import {
   SimpleChanges
 } from "@angular/core";
 
-type GConstructor<T = {}> = new (...args: any[]) => T;
-
-export type BaseInjectorConstructor = GConstructor<BaseClassInjector>;
-
 @Injectable()
 export abstract class BaseClassInjector implements
   OnChanges,
@@ -38,5 +34,9 @@ export abstract class BaseClassInjector implements
   ngAfterViewChecked(): void {}
   ngOnDestroy(): void {}
 }
+
+type GConstructor<T = {}> = new (...args: any[]) => T;
+
+export type BaseInjectorConstructor = GConstructor<BaseClassInjector>;
 
 export class Base extends BaseClassInjector {};
