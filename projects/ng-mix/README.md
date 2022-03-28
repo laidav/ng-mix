@@ -5,6 +5,7 @@ Angular schematic library for generating typescript mixins designed for Angular 
 Typescript mixins are then used to implement a composition pattern to share common logic across Angular components.
 
 ## Table of Contents <a name="table-of-contents"></a>
+1. [Requirements](#requirements)
 1. [Installation](#installation)
 1. [Usage](#usage)
 	1. [CLI Command](#cli-command)
@@ -15,6 +16,9 @@ Typescript mixins are then used to implement a composition pattern to share comm
 	1. [Angular @Input and @Outputs Decorators](#input-output)
 	1. [Angular Services](#services)
 
+## Requirements <a name="requirements"></a>
+
+- Angular 8 or higher
 
 ## Installation <a name="installation"></a>
 
