@@ -7,7 +7,7 @@
     matInput 
   />
 	<mat-autocomplete #autoComp="matAutocomplete" panelWidth="297px">
-		<ng-container *ngIf="filteredOptions$ | async as filteredOptions">
+		<ng-container *ngIf="filteredOptionsSingleSelect$ | async as filteredOptions">
 			<mat-option *ngFor="let option of filteredOptions" [value]="option.value"
 				(onSelectionChange)="onOptionSelect(option)">
 				<span>{{ option.label }}</span>
